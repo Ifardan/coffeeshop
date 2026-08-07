@@ -17,3 +17,10 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Railway test files
+import-railway.php
+test-railway.php
+
+# Laravel compiled views cache
+/storage/framework/views/
