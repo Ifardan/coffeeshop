@@ -41,10 +41,22 @@
 
             </a>
 
-            <a href="{{ route('kasir.transactions') }}"
-               class="block p-3 rounded hover:bg-green-800">
+           <a href="{{ route('kasir.transactions') }}"
+              class="flex items-center justify-between p-3 rounded hover:bg-green-800">
 
-              💰 Transaksi
+              <span>
+                  💰 Transaksi
+              </span>
+
+              @if($transaksiBaru > 0)
+                 <span class="bg-red-500 text-white text-xs font-bold
+                              rounded-full min-w-[24px] h-6
+                              flex items-center justify-center px-2">
+
+                     {{ $transaksiBaru }}
+
+                 </span>
+              @endif
 
             </a>
             
