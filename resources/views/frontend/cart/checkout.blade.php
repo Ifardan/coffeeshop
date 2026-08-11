@@ -4,18 +4,6 @@
 
 <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
 
-    <!-- Tombol Kembali -->
-    <div class="mb-4">
-
-        <a href="{{ route('cart.index') }}"
-           class="inline-block bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm">
-
-            ← Keranjang
-
-        </a>
-
-    </div>
-
     <h1 class="text-2xl font-bold mb-4">
         Checkout Keranjang
     </h1>
@@ -186,9 +174,8 @@
         @if($payment && $payment->qris_image)
 
             <img
-                src="{{ asset('images/' . $payment->qris_image) }}"
-                class="w-full max-w-xs mx-auto rounded shadow"
-                class="mx-auto rounded shadow">
+               src="{{ asset('images/' . $payment->qris_image) }}"
+               class="w-full max-w-xs mx-auto rounded shadow">
 
         @else
 
@@ -263,6 +250,8 @@
     </div>
 
     <button
+    
+        type="submit"
         class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold">
 
         Proses Pesanan

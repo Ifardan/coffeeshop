@@ -252,14 +252,7 @@
 
     </div>
 
-        <div class="flex justify-between items-center mt-6">
-
-           <a href="{{ url('/cart') }}"
-              class="bg-gray-500 hover:bg-gray-600 text-white px-5 py-2 rounded">
-
-              ← Kembali
-
-            </a>
+       <div class="mt-6"> 
 
             <button
                 type="submit"
