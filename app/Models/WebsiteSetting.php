@@ -11,7 +11,8 @@ class WebsiteSetting extends Model
         // ABOUT
         'about_title',
         'about_description',
-
+        'about_image',
+        
         // CONTACT
         'contact_address',
         'contact_phone',

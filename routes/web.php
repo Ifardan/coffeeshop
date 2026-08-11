@@ -523,15 +523,18 @@ Route::post('/website/home/update', function (\Illuminate\Http\Request $request)
 
 })->name('website.home.update');
 
-    Route::get('/website/about', function () {
+   Route::get('/website/about', function () {
 
-    $setting = WebsiteSetting::first();
+    $setting = WebsiteSetting::firstOrCreate([
+        'id' => 1
+    ]);
 
     return view('owner.website.about', compact('setting'));
 
-    })->name('website.about');
+})->name('website.about');
 
-    Route::post('/website/about/update', function (\Illuminate\Http\Request $request) {
+
+Route::post('/website/about/update', function (\Illuminate\Http\Request $request) {
 
     $setting = WebsiteSetting::firstOrCreate([
         'id' => 1
@@ -548,7 +551,7 @@ Route::post('/website/home/update', function (\Illuminate\Http\Request $request)
         $file = $request->file('about_image');
 
         $filename =
-            time().'_'.$file->getClientOriginalName();
+            time() . '_' . $file->getClientOriginalName();
 
         $file->move(
             public_path('images'),
@@ -560,8 +563,10 @@ Route::post('/website/home/update', function (\Illuminate\Http\Request $request)
 
     $setting->save();
 
-    return back()
-        ->with('success', 'About berhasil diupdate');
+    return back()->with(
+        'success',
+        'About berhasil diupdate'
+    );
 
 })->name('website.about.update');
 
