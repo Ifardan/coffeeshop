@@ -27,12 +27,15 @@ class WebsiteSetting extends Model
 
         'favorite_col1_title',
         'favorite_col1_items',
+        'favorite_col1_image',
 
         'favorite_col2_title',
         'favorite_col2_items',
+        'favorite_col2_image',
 
         'favorite_col3_title',
         'favorite_col3_items',
-
+        'favorite_col3_image',
+        
     ];
 }

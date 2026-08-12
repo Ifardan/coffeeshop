@@ -500,26 +500,112 @@ Route::resource(
 
 Route::post('/website/home/update', function (\Illuminate\Http\Request $request) {
 
-    \App\Models\WebsiteSetting::updateOrCreate(
-        ['id' => 1],
-        [
-            'hero_title' => $request->hero_title,
-            'hero_subtitle' => $request->hero_subtitle,
+    $setting = \App\Models\WebsiteSetting::firstOrCreate([
+        'id' => 1
+    ]);
 
-            'favorite_title' => $request->favorite_title,
+    // TEXT HOME
+    $setting->hero_title = $request->hero_title;
+    $setting->hero_subtitle = $request->hero_subtitle;
 
-            'favorite_col1_title' => $request->favorite_col1_title,
-            'favorite_col1_items' => $request->favorite_col1_items,
+    $setting->favorite_title = $request->favorite_title;
 
-            'favorite_col2_title' => $request->favorite_col2_title,
-            'favorite_col2_items' => $request->favorite_col2_items,
+    $setting->favorite_col1_title = $request->favorite_col1_title;
+    $setting->favorite_col1_items = $request->favorite_col1_items;
 
-            'favorite_col3_title' => $request->favorite_col3_title,
-            'favorite_col3_items' => $request->favorite_col3_items,
-        ]
+    $setting->favorite_col2_title = $request->favorite_col2_title;
+    $setting->favorite_col2_items = $request->favorite_col2_items;
+
+    $setting->favorite_col3_title = $request->favorite_col3_title;
+    $setting->favorite_col3_items = $request->favorite_col3_items;
+
+
+    // FOTO HERO
+    if ($request->hasFile('hero_image')) {
+
+        $file = $request->file('hero_image');
+
+        $filename = time() . '_hero_' . $file->getClientOriginalName();
+
+        $file->move(
+            public_path('images'),
+            $filename
+        );
+
+        $setting->hero_image = $filename;
+    }
+
+
+    // FOTO CAFE
+    if ($request->hasFile('cafe_image')) {
+
+        $file = $request->file('cafe_image');
+
+        $filename = time() . '_cafe_' . $file->getClientOriginalName();
+
+        $file->move(
+            public_path('images'),
+            $filename
+        );
+
+        $setting->cafe_image = $filename;
+    }
+
+
+    // FOTO MENU FAVORIT 1
+    if ($request->hasFile('favorite_col1_image')) {
+
+        $file = $request->file('favorite_col1_image');
+
+        $filename = time() . '_favorite1_' . $file->getClientOriginalName();
+
+        $file->move(
+            public_path('images'),
+            $filename
+        );
+
+        $setting->favorite_col1_image = $filename;
+    }
+
+
+    // FOTO MENU FAVORIT 2
+    if ($request->hasFile('favorite_col2_image')) {
+
+        $file = $request->file('favorite_col2_image');
+
+        $filename = time() . '_favorite2_' . $file->getClientOriginalName();
+
+        $file->move(
+            public_path('images'),
+            $filename
+        );
+
+        $setting->favorite_col2_image = $filename;
+    }
+
+
+    // FOTO MENU FAVORIT 3
+    if ($request->hasFile('favorite_col3_image')) {
+
+        $file = $request->file('favorite_col3_image');
+
+        $filename = time() . '_favorite3_' . $file->getClientOriginalName();
+
+        $file->move(
+            public_path('images'),
+            $filename
+        );
+
+        $setting->favorite_col3_image = $filename;
+    }
+
+
+    $setting->save();
+
+    return back()->with(
+        'success',
+        'Home berhasil diupdate'
     );
-
-    return back()->with('success', 'Home berhasil diupdate');
 
 })->name('website.home.update');
 
