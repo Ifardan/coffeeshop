@@ -11,7 +11,8 @@
 <!-- ===================================================== -->
 
 <section
-    class="relative min-h-[620px] md:min-h-[700px] bg-cover bg-center bg-no-repeat"
+    <section
+    class="relative min-h-[430px] sm:min-h-[500px] md:min-h-[700px] bg-cover bg-center bg-no-repeat"
     style="background-image: url('{{ !empty($setting->hero_image)
         ? asset('images/' . $setting->hero_image)
         : 'https://images.unsplash.com/photo-1447933601403-0c6688de566e'
@@ -21,10 +22,10 @@
     <div class="absolute inset-0 bg-black/60"></div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 min-h-[620px] md:min-h-[700px]">
+    <div class="relative z-10 min-h-[430px] sm:min-h-[500px] md:min-h-[700px]">
 
         <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8
-                    min-h-[620px] md:min-h-[700px]
+                    min-h-[430px] sm:min-h-[500px] md:min-h-[700px]
                     flex items-center">
 
             <div class="w-full max-w-2xl text-white">
